@@ -18,7 +18,9 @@
                     <td class="date-title" id="{{ date.slug }}">{{ date.name }}</td>
                     <td ng-repeat-start="(slug, entry) in habits[date.slug]"
                     class="habit" id="{{ slug }}"
-                    ng-class="{true: 'completed', false:'uncompleted'}[entry.value]"><span class="habit-name">{{ entry.name }}</span></td>
+                    ng-class="{true: 'completed', false:'uncompleted'}[entry.value]">
+                      <span class="habit-name">{{ entry.name }}</span>
+                    </td>
                     <td ng-repeat-end></td>
                 </tr>
             </table>

@@ -35,11 +35,15 @@ class Habit(Resource):
 class Entry(Resource):
     def get(self, date):
         entry = db['entries'].find_one(date=date)
-        
+
         habits = get_habits()
         for habit in habits:
             if habit not in entry:
                 entry[habit] = False
+
+        for k, v in entry.iteritems():
+            if v is None:
+                entry[k] = False
 
         return entry
 
