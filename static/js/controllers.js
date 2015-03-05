@@ -43,13 +43,17 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
         $http.get('/api/entries/' + date.slug).
             success(function(data, status, headers, config) {
                 var entry = {};
-                for (var key in data[0]) {
+                for (var key in data) {
                     if ((key !== 'id') && (key !== 'date')) {
-                        entry[habit_names[key]] = data[0][key];
+                        entry[key] = {
+                            'name': habit_names[key],
+                            'value': data[key]
+                        };
                     }
                 }
                 $scope.habits[date.slug] = entry;
             }).
             error(function(data, status, headers, config){});
     });
+    console.log($scope.habits);
 });

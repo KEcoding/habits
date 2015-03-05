@@ -16,9 +16,9 @@
             <table class="dates">
                 <tr class="date-row" ng-repeat="date in dates">
                     <td class="date-title" id="{{ date.slug }}">{{ date.name }}</td>
-                    <td ng-repeat-start="(key, value) in habits[date.slug]"
-                    class="habit" id="{{ key }}"
-                    ng-class="{true: 'completed', false:'uncompleted'}[value]">{{ key }}</td>
+                    <td ng-repeat-start="(slug, entry) in habits[date.slug]"
+                    class="habit" id="{{ slug }}"
+                    ng-class="{true: 'completed', false:'uncompleted'}[entry.value]">{{ entry.name }}</td>
                     <td ng-repeat-end></td>
                 </tr>
             </table>

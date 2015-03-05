@@ -34,7 +34,14 @@ class Habit(Resource):
 
 class Entry(Resource):
     def get(self, date):
-        return list(db['entries'].find(date=date))
+        entry = db['entries'].find_one(date=date)
+        
+        habits = get_habits()
+        for habit in habits:
+            if habit not in entry:
+                entry[habit] = False
+
+        return entry
 
     def post(self, date):
         parser = reqparse.RequestParser()
