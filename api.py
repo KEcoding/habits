@@ -12,6 +12,10 @@ api = Api(api_blueprint)
 def get_habits():
     return [i['slug'] for i in list(db['habits'].all())]
 
+class HabitList(Resource):
+    def get(self):
+        return list(db['habits'].all())
+
 class Habit(Resource):
     def get(self, slug):
         return db['habits'].find_one(slug=slug)
@@ -45,5 +49,6 @@ class Entry(Resource):
         db['entries'].upsert(entry, ['date'])
         return db['entries'].find_one(date=date)
 
-api.add_resource(Habit, '/<string:slug>')
+api.add_resource(HabitList, '/habits')
+api.add_resource(Habit, '/habits/<string:slug>')
 api.add_resource(Entry, '/entries/<string:date>')

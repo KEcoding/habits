@@ -1,12 +1,12 @@
-<!doctype html>
-<html lang="en" ng-app>
+<html ng-app="habitsApp">
 <head>
   <meta charset="utf-8">
   <title>Habits</title>
   <link rel="stylesheet" href="/static/components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/template.css">
   <link rel="stylesheet" href="/static/css/app.css">
-  <script src="/static/components/angular/angular.js"></script>
+  <!-- <script src="/static/components/angular/angular.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
   <script src="/static/js/controllers.js"></script>
 </head>
 <body ng-controller="HabitsCtrl">
@@ -16,7 +16,8 @@
             <table class="dates">
                 <tr class="date-row" ng-repeat="date in dates">
                     <td class="date-title" id="{{ date.slug }}">{{ date.name }}</td>
-                    <td class="habit" ng-repeat="habit in habits" id="{{ habit.slug }}">{{ habit.name }}</td>
+                    <td ng-repeat-start="habit in habits" class="habit" id="{{ habit.slug }}">{{ habit.name }}</td>
+                    <td ng-repeat-end></td>
                 </tr>
             </table>
         </div>
