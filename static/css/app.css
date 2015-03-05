@@ -1,0 +1,13 @@
+.dates {
+    margin-top: 30px;
+    font-size: 14pt;
+}
+
+.dates td {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.date-title {
+    font-weight: bold;
+}
