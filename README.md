@@ -5,3 +5,13 @@ A lightweight habit tracker.
 * Support for SQLite, MySQL, and Postgres databases via dataset
 * Simple web interface
 * REST-ful API
+
+## Installation
+```bash
+git clone https://github.com/csu/habits.git
+cd habits
+# make a Python virtual environment, if you want
+pip install -r requirements.txt
+bower install
+python server.py
+```
