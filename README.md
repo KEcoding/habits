@@ -6,6 +6,8 @@ A lightweight habit tracker.
 * Simple web interface
 * REST-ful API
 
+![](http://i.imgur.com/PAx8PW9.jpg)
+
 ## Installation
 ```bash
 git clone https://github.com/csu/habits.git
