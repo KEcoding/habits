@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+  <title>Habits</title>
+  <link rel="stylesheet" href="/static/components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/template.css">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script src="/static/components/angular/angular.js"></script>
+  <script src="/static/js/controllers.js"></script>
+</head>
+<body ng-controller="HabitsCtrl">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Habits</h1>
+            <table class="dates">
+                <tr class="date-row" ng-repeat="date in dates">
+                    <td class="date-title" id="{{ date.slug }}">{{ date.name }}</td>
+                    <td class="habit" ng-repeat="habit in habits" id="{{ habit.slug }}">{{ habit.name }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- <div class="footer">
+        <p>Copyright 2015 Christopher Su</p>
+    </div> -->
+</body>
+</html>

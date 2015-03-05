@@ -6,7 +6,7 @@ app.register_blueprint(api_blueprint, url_prefix='/api')
 
 @app.route('/')
 def main():
-    return render_template('app.html')
+    return app.send_static_file('app.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
