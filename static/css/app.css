@@ -12,6 +12,14 @@
     font-weight: bold;
 }
 
-.completed .habit-name{
-    background-color: papayawhip;
+.habit-name {
+    padding: 5px;
+}
+
+.completed .habit-name {
+    background-color: #80CC80;
+}
+
+.uncompleted .habit-name {
+    background-color: #FFD699;
 }
