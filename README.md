@@ -2,7 +2,7 @@
 A lightweight habit tracker.
 
 ## Features
-* Support for SQLite, MySQL, and Postgres databases via dataset
+* Support for SQLite, MySQL, and Postgres databases
 * Simple web interface
 * REST-ful API
 

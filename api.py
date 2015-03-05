@@ -1,8 +1,9 @@
 from flask import Blueprint, abort
 from flask.ext.restful import Resource, Api, reqparse
 import dataset
+import config
 
-db = dataset.connect('sqlite:///habits.db')
+db = dataset.connect(config.DATABASE_URI)
 db['habits'].create_index(['slug'])
 db['entries'].create_index(['date'])
 
