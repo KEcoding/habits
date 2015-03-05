@@ -38,17 +38,21 @@ class Entry(Resource):
 
     def post(self, date):
         parser = reqparse.RequestParser()
-        parser.add_argument('habit', type=str, action='append', required=True)
+        parser.add_argument('habit', type=str, action='append')
         args = parser.parse_args()
 
         entry = dict()
         entry['date'] = date
         habits = get_habits()
-        for habit in args['habit']:
+        if ('habit' in args):
+            input_habits = args['habit']
+        if not input_habits:
+            input_habits = []
+        for habit in input_habits:
             if habit not in habits:
                 abort(400)
         for habit in habits:
-            entry[habit] = (habit in args['habit'])
+            entry[habit] = (habit in input_habits)
 
         db['entries'].upsert(entry, ['date'])
         return db['entries'].find_one(date=date)
