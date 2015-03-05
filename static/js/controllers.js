@@ -30,10 +30,10 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
         });
     }
 
-    var habit_names = {};
+    var habitNames = {};
     $http.get('/api/habits/names').
         success(function(data, status, headers, config) {
-            habit_names = data;
+            habitNames = data;
         }).
         error(function(data, status, headers, config){});
 
@@ -46,7 +46,7 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
                 for (var key in data) {
                     if ((key !== 'id') && (key !== 'date')) {
                         entry[key] = {
-                            'name': habit_names[key],
+                            'name': habitNames[key],
                             'value': data[key]
                         };
                     }
@@ -55,5 +55,12 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
             }).
             error(function(data, status, headers, config){});
     });
-    console.log($scope.habits);
+
+    $scope.toggleEntry = function(dateSlug, habitSlug) {
+        $http.post('/api/entries/' + dateSlug + '/' + habitSlug)
+            .success(function(data, status, headers, config) {
+                
+            })
+            .error(function(data, status, headers, config){});
+    };
 });

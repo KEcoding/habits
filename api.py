@@ -69,7 +69,17 @@ class Entry(Resource):
         db['entries'].upsert(entry, ['date'])
         return db['entries'].find_one(date=date)
 
+class HabitToggle(Resource):
+    def post(self, date, habit):
+        entry = db['entries'].find_one(date=date)
+        if habit not in entry:
+            abort(400)
+        entry[habit] = not entry[habit]
+        db['entries'].upsert(entry, ['date'])
+        return db['entries'].find_one(date=date)
+
 api.add_resource(HabitList, '/habits')
 api.add_resource(HabitNames, '/habits/names')
 api.add_resource(Habit, '/habits/<string:slug>')
 api.add_resource(Entry, '/entries/<string:date>')
+api.add_resource(HabitToggle, '/entries/<string:date>/<string:habit>')
