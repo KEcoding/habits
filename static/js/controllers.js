@@ -9,17 +9,47 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
     
     $scope.dates = [];
     var date = new Date();
-    for (var i = 0; i < 5; i++) {
-        date.setDate(date.getDate()+1);
+    date.setDate(date.getDate()+1);
+    var dd, mm, yyyy;
+    for (var i = 0; i < 7; i++) {
+        date.setDate(date.getDate()-1);
+
+        dd = date.getDate();
+        mm = date.getMonth() + 1;
+        yyyy = date.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        } 
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+
         $scope.dates.push({
-            'slug': date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate(),
+            'slug': yyyy + '-' + mm + '-' + dd,
             'name': m_names[date.getMonth()] + ' ' + date.getDate()
         });
     }
 
-    $http.get('/api/habits').
-        success(function(data, status, headers, config){
-            $scope.habits = data;
+    var habit_names = {};
+    $http.get('/api/habits/names').
+        success(function(data, status, headers, config) {
+            habit_names = data;
         }).
         error(function(data, status, headers, config){});
+
+    $scope.habits = {};
+    $scope.dates.forEach(function (date) {
+        $scope.habits[date] = {};
+        $http.get('/api/entries/' + date.slug).
+            success(function(data, status, headers, config) {
+                var entry = {};
+                for (var key in data[0]) {
+                    if ((key !== 'id') && (key !== 'date')) {
+                        entry[habit_names[key]] = data[0][key];
+                    }
+                }
+                $scope.habits[date.slug] = entry;
+            }).
+            error(function(data, status, headers, config){});
+    });
 });

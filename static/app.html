@@ -16,15 +16,13 @@
             <table class="dates">
                 <tr class="date-row" ng-repeat="date in dates">
                     <td class="date-title" id="{{ date.slug }}">{{ date.name }}</td>
-                    <td ng-repeat-start="habit in habits" class="habit" id="{{ habit.slug }}">{{ habit.name }}</td>
+                    <td ng-repeat-start="(key, value) in habits[date.slug]"
+                    class="habit" id="{{ key }}"
+                    ng-class="{true: 'completed', false:'uncompleted'}[value]">{{ key }}</td>
                     <td ng-repeat-end></td>
                 </tr>
             </table>
         </div>
     </div>
-
-    <!-- <div class="footer">
-        <p>Copyright 2015 Christopher Su</p>
-    </div> -->
 </body>
 </html>

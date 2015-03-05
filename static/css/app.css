@@ -11,3 +11,7 @@
 .date-title {
     font-weight: bold;
 }
+
+.completed {
+    background-color: papayawhip;
+}

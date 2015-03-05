@@ -16,6 +16,10 @@ class HabitList(Resource):
     def get(self):
         return list(db['habits'].all())
 
+class HabitNames(Resource):
+    def get(self):
+        return {i['slug']: i['name'] for i in list(db['habits'].all())}
+
 class Habit(Resource):
     def get(self, slug):
         return db['habits'].find_one(slug=slug)
@@ -50,5 +54,6 @@ class Entry(Resource):
         return db['entries'].find_one(date=date)
 
 api.add_resource(HabitList, '/habits')
+api.add_resource(HabitNames, '/habits/names')
 api.add_resource(Habit, '/habits/<string:slug>')
 api.add_resource(Entry, '/entries/<string:date>')
