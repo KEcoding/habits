@@ -78,8 +78,13 @@ class HabitToggle(Resource):
         db['entries'].upsert(entry, ['date'])
         return db['entries'].find_one(date=date)
 
+class EntryExport(Resource):
+    def get(self):
+        return list(db['entries'].all())
+
 api.add_resource(HabitList, '/habits')
 api.add_resource(HabitNames, '/habits/names')
 api.add_resource(Habit, '/habits/<string:slug>')
+api.add_resource(EntryExport, '/entries/export')
 api.add_resource(Entry, '/entries/<string:date>')
 api.add_resource(HabitToggle, '/entries/<string:date>/<string:habit>')

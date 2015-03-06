@@ -58,9 +58,7 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
 
     $scope.toggleEntry = function(dateSlug, habitSlug) {
         $http.post('/api/entries/' + dateSlug + '/' + habitSlug)
-            .success(function(data, status, headers, config) {
-                
-            })
+            .success(function(data, status, headers, config) {})
             .error(function(data, status, headers, config){});
     };
 });
