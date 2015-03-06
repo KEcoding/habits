@@ -30,35 +30,40 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
         });
     }
 
-    var habitNames = {};
-    $http.get('/api/habits/names').
-        success(function(data, status, headers, config) {
-            habitNames = data;
-        }).
-        error(function(data, status, headers, config){});
-
-    $scope.habits = {};
-    $scope.dates.forEach(function (date) {
-        $scope.habits[date] = {};
-        $http.get('/api/entries/' + date.slug).
+    $scope.updateEntries = function() {
+        var habitNames = {};
+        $http.get('/api/habits/names').
             success(function(data, status, headers, config) {
-                var entry = {};
-                for (var key in data) {
-                    if ((key !== 'id') && (key !== 'date')) {
-                        entry[key] = {
-                            'name': habitNames[key],
-                            'value': data[key]
-                        };
-                    }
-                }
-                $scope.habits[date.slug] = entry;
+                habitNames = data;
             }).
             error(function(data, status, headers, config){});
-    });
+
+        $scope.habits = {};
+        $scope.dates.forEach(function (date) {
+            $scope.habits[date] = {};
+            $http.get('/api/entries/' + date.slug).
+                success(function(data, status, headers, config) {
+                    var entry = {};
+                    for (var key in data) {
+                        if ((key !== 'id') && (key !== 'date')) {
+                            entry[key] = {
+                                'name': habitNames[key],
+                                'value': data[key]
+                            };
+                        }
+                    }
+                    $scope.habits[date.slug] = entry;
+                }).
+                error(function(data, status, headers, config){});
+        });
+    };
+
+    $scope.updateEntries();
 
     $scope.toggleEntry = function(dateSlug, habitSlug) {
         $http.post('/api/entries/' + dateSlug + '/' + habitSlug)
             .success(function(data, status, headers, config) {})
             .error(function(data, status, headers, config){});
+        $scope.updateEntries();
     };
 });
