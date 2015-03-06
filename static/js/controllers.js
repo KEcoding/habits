@@ -38,7 +38,6 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
             }).
             error(function(data, status, headers, config){});
 
-        $scope.habits = {};
         $scope.dates.forEach(function (date) {
             $scope.habits[date] = {};
             $http.get('/api/entries/' + date.slug).
@@ -58,6 +57,7 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
         });
     };
 
+    $scope.habits = {};
     $scope.updateEntries();
 
     $scope.toggleEntry = function(dateSlug, habitSlug) {
