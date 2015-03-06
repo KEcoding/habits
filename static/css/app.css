@@ -18,6 +18,7 @@
 
 .habit-name {
     padding: 5px;
+    cursor: pointer;
 }
 
 .completed .habit-name {
