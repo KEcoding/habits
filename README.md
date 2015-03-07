@@ -4,7 +4,7 @@ A lightweight habit tracker.
 ## Features
 * Support for SQLite, MySQL, and Postgres databases
 * Simple web interface
-* REST-ful API
+* [REST-ful API](#api)
 
 ![](http://i.imgur.com/PAx8PW9.jpg)
 
