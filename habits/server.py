@@ -9,10 +9,11 @@ def index():
     return app.send_static_file('app.html')
 
 def production():
-    import logging
-    log = logging.getLogger('werkzeug')
-    log.setLevel(logging.ERROR)
-    app.run(debug=False)
+    # import logging
+    # log = logging.getLogger('werkzeug')
+    # log.setLevel(logging.ERROR)
+    # app.run(debug=False)
+    app.run()
 
 if __name__ == '__main__':
     app.run(debug=True)
