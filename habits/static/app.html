@@ -29,11 +29,13 @@
             <table class="configuration">
               <tr>
                 <td>Add a habit:&nbsp;&nbsp;&nbsp;</td>
-                <td><input type="text" ng-model="newHabitName"> <button type="button">Add</button></td>
+                <td><input type="text" ng-model="newHabitName">
+                <button type="button" ng-click="createHabit()">Add</button></td>
               </tr>
               <tr>
                 <td>Delete a habit (by name):&nbsp;&nbsp;&nbsp;</td>
-                <td><input type="text" ng-model="newHabitName"> <button type="button">Remove</button></td>
+                <td><input type="text" ng-model="deleteHabitName">
+                <button type="button">Remove</button></td>
               </tr>
               <tr>
                 <td><a href="/api/entries/export">Export entries as JSON</a></td>

@@ -66,4 +66,13 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
             .error(function(data, status, headers, config){});
         $scope.updateEntries();
     };
+
+    $scope.createHabit = function() {
+        var habitName = $scope.newHabitName;
+        var slug = habitName.toLowerCase().replace(" ", "-");
+        $http.post('/api/habits/' + slug, {name: habitName})
+            .success(function(data, status, headers, config) {})
+            .error(function(data, status, headers, config){});
+        $scope.updateEntries();
+    };
 });

@@ -8,14 +8,10 @@ A lightweight habit tracker with a simple REST API.
 
 ![](http://i.imgur.com/PAx8PW9.jpg)
 
-## Installation
+## Installation and Usage
 ```bash
-git clone https://github.com/csu/habits.git
-cd habits
-# make a Python virtual environment, if you want
-pip install -r requirements.txt
-bower install
-python server.py
+pip install habits # install via pip
+habits # start the web server, browse to localhost:5000
 ```
 
 ## API
@@ -31,4 +27,14 @@ GET /entries/export - Get all entries
 GET /entries/<YYYY-MM-DD date string> - Get entry for a day
 POST /entries/<YYYY-MM-DD date string> - Set entry for a day
 POST /entries/<YYYY-MM-DD>/<habit_slug> - Set the value for a habit on a day
+```
+
+## Install from Source
+```bash
+git clone https://github.com/csu/habits.git
+cd habits
+# make a Python virtual environment, if you want
+pip install -r requirements.txt
+bower install
+python habits/server.py
 ```
