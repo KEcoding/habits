@@ -1,7 +1,7 @@
 habits
 ======
 
-A lightweight habit tracker.
+A lightweight habit tracker with a simple REST API.
 
 Features
 --------
@@ -10,21 +10,17 @@ Features
 -  Simple web interface
 -  `REST-ful API <#api>`_
 
-.. figure:: http://i.imgur.com/PAx8PW9.jpg
+.. figure:: http://i.imgur.com/r1pxq6e.jpg
    :align: center
    :alt: 
 
-Installation
-------------
+Installation and Usage
+----------------------
 
 ::
 
-    git clone https://github.com/csu/habits.git
-    cd habits
-    # make a Python virtual environment, if you want
-    pip install -r requirements.txt
-    bower install
-    python server.py
+    pip install habits # install via pip
+    habits # start the web server, browse to localhost:5000
 
 API
 ---
@@ -42,4 +38,16 @@ API
     GET /entries/<YYYY-MM-DD date string> - Get entry for a day
     POST /entries/<YYYY-MM-DD date string> - Set entry for a day
     POST /entries/<YYYY-MM-DD>/<habit_slug> - Set the value for a habit on a day
+
+Install from Source
+-------------------
+
+::
+
+    git clone https://github.com/csu/habits.git
+    cd habits
+    # make a Python virtual environment, if you want
+    pip install -r requirements.txt
+    bower install
+    python habits/server.py
 

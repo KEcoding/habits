@@ -6,7 +6,7 @@ A lightweight habit tracker with a simple REST API.
 * Simple web interface
 * [REST-ful API](#api)
 
-![](http://i.imgur.com/PAx8PW9.jpg)
+![](http://i.imgur.com/r1pxq6e.jpg)
 
 ## Installation and Usage
 ```bash
