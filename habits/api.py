@@ -41,7 +41,7 @@ class Entry(Resource):
         entry = db['entries'].find_one(date=date)
 
         if entry is None:
-            return {}
+            entry = {}
 
         habits = get_habits()
         for habit in habits:
