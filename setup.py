@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-
 from setuptools import setup, find_packages
 
-version = '0.0.12'
+version = '0.0.14'
 
 setup(
     name='habits',
@@ -15,6 +14,18 @@ setup(
     keywords=['habits', 'quantified self', 'data', 'api'],
     url='http://github.com/csu/habits',
     packages=find_packages(),
+    include_package_data=True,
+    package_data={
+        'habits': [
+            'static/components/bootstrap/dist/css/*',
+            'static/components/bootstrap/dist/fonts/*',
+            'static/components/bootstrap/dist/js/*',
+            'static/components/jquery/dist/*',
+            'static/css/*',
+            'static/js/*'
+            'static/*.html',
+        ],
+    },
     install_requires=[
         'Flask',
         'Flask-RESTful',
