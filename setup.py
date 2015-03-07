@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-version = '0.0.1'
+version = '0.0.2'
 
 setup(
     name='habits',
@@ -17,22 +17,9 @@ setup(
     packages=find_packages(),
     install_requires=[
         'Flask',
-        'Flask',
-        'Jinja2',
-        'Mako',
-        'MarkupSafe',
-        'PyYAML',
-        'SQLAlchemy',
-        'Unidecode',
-        'Werkzeug',
-        'alembic',
-        'aniso8601',
+        'Flask-RESTful',
         'dataset',
-        'itsdangerous',
-        'python',
-        'pytz',
-        'six',
-    ]
+    ],
     entry_points={
         'console_scripts': [
             'habits=habits:production'
