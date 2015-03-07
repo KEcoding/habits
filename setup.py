@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-version = '0.0.4'
+version = '0.0.5'
 
 setup(
     name='habits',
@@ -15,6 +15,9 @@ setup(
     keywords=['habits', 'quantified self', 'data', 'api'],
     url='http://github.com/csu/habits',
     packages=find_packages(),
+    package_data={
+        'habits': ['static/*']
+    }
     install_requires=[
         'Flask',
         'Flask-RESTful',
