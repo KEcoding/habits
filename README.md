@@ -17,3 +17,17 @@ pip install -r requirements.txt
 bower install
 python server.py
 ```
+
+## API
+```
+Base URL: /api/
+
+Endpoints:
+GET /habits - Get all habits
+GET /habits/names - Get a mapping of habit slugs to names
+GET /habits/<habit_slug> - Get the slug and name for a habit
+POST /habits/<habit_slug> - Make a new habit
+GET /entries/export - Get all entries
+GET /entries/<YYYY-MM-DD date string> - Get entry for a day
+GET /entries/<YYYY-MM-DD>/<habit_slug> - Get the value for a habit on a day
+```

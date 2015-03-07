@@ -25,6 +25,19 @@
                     <td ng-repeat-end></td>
                 </tr>
             </table>
+            <h3>Configuration</h3>
+            <table class="configuration">
+              <tr>
+                <td>Add a habit:&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="text" ng-model="newHabitName"> <button type="button">Add</button></td>
+              </tr>
+              <tr>
+                <td>Delete a habit (by name):&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="text" ng-model="newHabitName"> <button type="button">Remove</button></td>
+              </tr>
+              <tr>
+                <td><a href="/api/entries/export">Export entries as JSON</a></td>
+              </tr>
         </div>
     </div>
 </body>

@@ -28,3 +28,7 @@
 .uncompleted .habit-name {
     background-color: #FFD699;
 }
+
+.configuration tr {
+    padding-bottom: 10px;
+}
