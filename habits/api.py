@@ -16,6 +16,16 @@ api = Api(api_blueprint)
 def get_habits():
     return [i['slug'] for i in list(db['habits'].all())]
 
+def get_row_for_id(table, id):
+    return db[table].find_one(id=id)
+
+def get_entry_for_date(date):
+    entry = db['entries'].find_one(date=date)
+    if entry is None:
+        entry_id = db['entries'].insert(dict(date=date))
+        entry = get_row_for_id('entries', entry_id)
+    return entry
+
 class HabitList(Resource):
     def get(self):
         return list(db['habits'].all())
@@ -34,14 +44,11 @@ class Habit(Resource):
         args = parser.parse_args()
 
         habit_id = db['habits'].insert(dict(name=args['name'], slug=slug))
-        return db['habits'].find_one(id=habit_id)
+        return get_row_for_id('habits', habit_id)
 
 class Entry(Resource):
     def get(self, date):
-        entry = db['entries'].find_one(date=date)
-
-        if entry is None:
-            entry = {}
+        entry = get_entry_for_date(date)
 
         habits = get_habits()
         for habit in habits:
@@ -77,12 +84,15 @@ class Entry(Resource):
 
 class HabitToggle(Resource):
     def post(self, date, habit):
-        entry = db['entries'].find_one(date=date)
+        entry = get_entry_for_date(date)
+
         if habit not in entry:
-            abort(400)
-        entry[habit] = not entry[habit]
+            entry[habit] = True
+        else:
+            entry[habit] = not entry[habit]
+
         db['entries'].upsert(entry, ['date'])
-        return db['entries'].find_one(date=date)
+        return get_entry_for_date(date)
 
 class EntryExport(Resource):
     def get(self):
