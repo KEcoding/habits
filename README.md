@@ -1,5 +1,5 @@
 # habits
-A lightweight habit tracker.
+A lightweight habit tracker with a simple REST API.
 
 ## Features
 * Support for SQLite, MySQL, and Postgres databases
