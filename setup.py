@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-version = '0.0.5'
+version = '0.0.6'
 
 setup(
     name='habits',
@@ -16,8 +16,8 @@ setup(
     url='http://github.com/csu/habits',
     packages=find_packages(),
     package_data={
-        'habits': ['static/*']
-    }
+        'habits': ['static/*', 'static/components/*', 'static/css/*', 'static/js/*']
+    },
     install_requires=[
         'Flask',
         'Flask-RESTful',
