@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
 
-version = '0.0.16'
+version = '0.0.17'
 
 setup(
     name='habits',
