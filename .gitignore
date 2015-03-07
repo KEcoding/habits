@@ -1,4 +1,4 @@
-static/components
+habits/static/components
 *.db
 
 # Byte-compiled / optimized / DLL files
