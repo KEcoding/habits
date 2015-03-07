@@ -1,1 +1,1 @@
-recursive-include habits *.css *.js *.html
+graft habits/static
