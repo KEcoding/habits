@@ -29,5 +29,6 @@ GET /habits/<habit_slug> - Get the slug and name for a habit
 POST /habits/<habit_slug> - Make a new habit
 GET /entries/export - Get all entries
 GET /entries/<YYYY-MM-DD date string> - Get entry for a day
-GET /entries/<YYYY-MM-DD>/<habit_slug> - Get the value for a habit on a day
+POST /entries/<YYYY-MM-DD date string> - Set entry for a day
+POST /entries/<YYYY-MM-DD>/<habit_slug> - Set the value for a habit on a day
 ```
