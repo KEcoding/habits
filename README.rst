@@ -10,7 +10,7 @@ Features
 -  Simple web interface
 -  `REST-ful API <#api>`_
 
-.. figure:: http://i.imgur.com/r1pxq6e.jpg
+.. figure:: http://i.imgur.com/IINq7ly.jpg
    :align: center
    :alt: 
 
