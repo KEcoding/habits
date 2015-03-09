@@ -16,7 +16,7 @@ habits # start the web server, browse to localhost:5000
 
 ## API
 ```
-Base URL: /api/
+Base URL: http://<your-habits-instance-hostname>/api/
 
 Endpoints:
 GET /habits - Get all habits
