@@ -33,7 +33,6 @@ POST /entries/<YYYY-MM-DD>/<habit_slug> - Set the value for a habit on a day
 ```bash
 git clone https://github.com/csu/habits.git
 cd habits
-# make a Python virtual environment, if you want
 pip install -r requirements.txt
 bower install
 python habits/server.py
