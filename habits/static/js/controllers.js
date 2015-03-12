@@ -75,4 +75,23 @@ habitsApp.controller('HabitsCtrl', function ($scope, $http) {
             .error(function(data, status, headers, config){});
         $scope.updateEntries();
     };
+
+    $scope.deleteHabit = function() {
+        var habitName = $scope.deleteHabitName;
+        
+        // Get the slug
+        $http.get('/api/habits/slugs')
+            .success(function(data, status, headers, config) {
+                var habitSlugs = data;
+                
+                var habitSlug = habitSlugs[habitName];
+
+                $http.delete('/api/habits/' + habitSlug)
+                    .success(function(data, status, headers, config) {
+                        $scope.updateEntries();
+                    })
+                    .error(function(data, status, headers, config){});
+            })
+            .error(function(data, status, headers, config){});
+    };
 });

@@ -35,7 +35,7 @@
               <tr>
                 <td>Delete a habit (by name):&nbsp;&nbsp;&nbsp;</td>
                 <td><input type="text" ng-model="deleteHabitName">
-                <button type="button">Remove</button></td>
+                <button type="button" ng-click="deleteHabit()">Remove</button></td>
               </tr>
               <tr>
                 <td><a href="/api/entries/export">Export entries as JSON</a></td>

@@ -34,6 +34,10 @@ class HabitNames(Resource):
     def get(self):
         return {i['slug']: i['name'] for i in list(db['habits'].all())}
 
+class HabitSlugs(Resource):
+    def get(self):
+        return {i['name']: i['slug'] for i in list(db['habits'].all())}
+
 class Habit(Resource):
     def get(self, slug):
         return db['habits'].find_one(slug=slug)
@@ -45,6 +49,13 @@ class Habit(Resource):
 
         habit_id = db['habits'].insert(dict(name=args['name'], slug=slug))
         return get_row_for_id('habits', habit_id)
+
+    def delete(self, slug):
+        db['habits'].delete(slug=slug)
+
+        # delete column from entries table
+
+        return {'status': 'success'}
 
 class Entry(Resource):
     def get(self, date):
@@ -100,7 +111,9 @@ class EntryExport(Resource):
 
 api.add_resource(HabitList, '/habits')
 api.add_resource(HabitNames, '/habits/names')
+api.add_resource(HabitSlugs, '/habits/slugs')
 api.add_resource(Habit, '/habits/<string:slug>')
+
 api.add_resource(EntryExport, '/entries/export')
 api.add_resource(Entry, '/entries/<string:date>')
 api.add_resource(HabitToggle, '/entries/<string:date>/<string:habit>')
