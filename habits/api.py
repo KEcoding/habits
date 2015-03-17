@@ -52,9 +52,7 @@ class Habit(Resource):
 
     def delete(self, slug):
         db['habits'].delete(slug=slug)
-
-        # delete column from entries table
-
+        db['entries'].drop_column(slug)
         return {'status': 'success'}
 
 class Entry(Resource):
