@@ -10,7 +10,7 @@ A lightweight habit tracker with a simple REST API.
 ![](http://i.imgur.com/IINq7ly.jpg)
 
 ## Installation and Usage
-```bash
+```
 pip install habits # install via pip
 habits # start the web server, browse to localhost:5000
 ```
