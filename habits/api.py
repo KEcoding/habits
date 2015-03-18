@@ -3,6 +3,10 @@ from flask.ext.restful import Resource, Api, reqparse
 import dataset
 import config
 
+# Create the SQLite database if it doesn't already exist
+from sqlalchemy import create_engine        
+engine = create_engine(config.DATABASE_URI)
+
 db = dataset.connect(config.DATABASE_URI)
 db['habits'].create_index(['slug'])
 db['entries'].create_index(['date'])
